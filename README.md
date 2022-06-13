@@ -20,12 +20,23 @@ This application is the first challenge from the [Ignite Bootcamp](https://rocke
   </p>
 </div>
 
+<div align="center">
+  <p align="center">
+    <img src="./.github/localStorage.png" width="700px" alt="Home page">
+  </p>
+</div>
+
 ### 🚀 Tecnologies
 
 - React.js
 - Typescript
 - SCSS
 - HTML
+
+# ✅ Extras
+
+- Implement useEffect.
+- Saving tasks inside localStorage. Is it possible to change the storage or delete
 
 # 🔧 How to run
 
