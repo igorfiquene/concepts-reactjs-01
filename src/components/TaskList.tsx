@@ -15,7 +15,13 @@ export function TaskList() {
   const [newTaskTitle, setNewTaskTitle] = useState('');
 
   useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks))
+    const data = window.localStorage.getItem('tasks')
+    if ( data !== null ) setTasks(JSON.parse(data));
+  }, [])
+
+
+  useEffect(() => {
+    window.localStorage.setItem('tasks', JSON.stringify(tasks))
   }, [tasks])
 
   function handleCreateNewTask() {
