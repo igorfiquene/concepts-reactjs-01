@@ -19,31 +19,40 @@ export function TaskList() {
   }, [tasks])
 
   function handleCreateNewTask() {
-    // Crie uma nova task com um id random, não permita criar caso o título seja vazio.
-    if (newTaskTitle) {
-      const randomId = Math.floor(Math.random() * 99999)
-      const newTaskCreated = {
-        id: randomId,
-        title: newTaskTitle,
-        isComplete: false,
-      }
-      setTasks([...tasks, newTaskCreated]) 
+
+    if (!newTaskTitle) return;
+
+    const randomId = Math.floor(Math.random() * 9999)
+
+    const newTask = {
+      id: randomId,
+      title: newTaskTitle,
+      isComplete: false
     }
+
+    setTasks(oldState => [...oldState, newTask])
+    setNewTaskTitle('')
   }
 
   function handleToggleTaskCompletion(id: number) {
     // Altere entre `true` ou `false` o campo `isComplete` de uma task com dado ID
-    const toggleTaskById = tasks.map(task => task.id === id ? {
-      ...task,
-      isComplete: !task.isComplete
-    } : task)
 
-    setTasks(toggleTaskById);
+    const updatedTask = tasks.map((task) => {
+      if (task.id === id) {
+        return {...task, isComplete: !task.isComplete}
+      }
+
+      return task;
+    })
+
+    setTasks(updatedTask)
   }
 
   function handleRemoveTask(id: number) {
-    const removeTask = tasks.filter(task => task.id !== id)
-    setTasks(removeTask)
+    // Remova uma task da listagem pelo ID
+    const filteredTask = tasks.filter((task) => task.id !== id)
+
+    setTasks(filteredTask)
   }
 
   return (
@@ -86,7 +95,6 @@ export function TaskList() {
               </button>
             </li>
           ))}
-          
         </ul>
       </main>
     </section>
