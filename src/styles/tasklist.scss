@@ -12,6 +12,11 @@ section.task-list {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+
+    @media only screen and (max-width: 767px) {
+      flex-flow: column;
+      gap: 25px;
+    }
     
     h2 {
       color: var(--text-title);
