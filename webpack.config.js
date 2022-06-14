@@ -29,7 +29,7 @@ module.exports = {
     rules: [
       {
         test: /\.(j|t)sx$/,
-        exclude: /node_modules/,
+        exclude: [/node_modules/, /assets/],
         use: {
           loader: 'babel-loader',
           options: {
@@ -43,6 +43,17 @@ module.exports = {
         test: /\.scss$/,
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.(png|jp(e*)g|svg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'images/[hash]-[name].[ext]',
+            },
+          },
+        ],
       },
     ]
   }
